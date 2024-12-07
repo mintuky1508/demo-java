@@ -7,9 +7,7 @@ on:
 
 jobs:
   handle-master:
-    runs-on: self-hosted
-    with:
-      runner: self-github
+    runs-on: [self-hosted, self-github]  # Specify runner by label
     if: github.ref == 'refs/heads/master'  # Run only for the master branch
     steps:
       - name: Checkout Code
@@ -19,9 +17,7 @@ jobs:
         run: echo "Running job for master branch."
 
   handle-deploy:
-    runs-on: self-hosted
-    with:
-      runner: self-github
+    runs-on: [self-hosted, self-github]  # Specify runner by label
     if: github.ref == 'refs/heads/deploy'  # Run only for the deploy branch
     steps:
       - name: Checkout Code
@@ -31,9 +27,7 @@ jobs:
         run: echo "Running job for deploy branch."
 
   handle-feature:
-    runs-on: self-hosted
-    with:
-      runner: self-github
+    runs-on: [self-hosted, self-github]  # Specify runner by label
     if: github.ref == 'refs/heads/feature'  # Run only for the feature branch
     steps:
       - name: Checkout Code
@@ -43,9 +37,7 @@ jobs:
         run: echo "Running job for feature branch."
 
   handle-other-branches:
-    runs-on: self-hosted
-    with:
-      runner: self-github
+    runs-on: [self-hosted, self-github]  # Specify runner by label
     if: |
       startsWith(github.ref, 'refs/heads/') && 
       github.ref != 'refs/heads/master' && 
